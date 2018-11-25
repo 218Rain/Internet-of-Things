@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+{% extends 'base.html' %}
+
+{% block page_content %}
+<div class="main-container container clearfix">
+  <div class="content panel" id="content">
+    <div class="node">
+      <h2>编辑设备</h2>
+      <div class="node-form edit-form">
+        <form action="" method="post">
+          {{form.hidden_tag()}}
+          <div class="form-group">
+                {{form.e_name(class="form-control",placeholder="编辑名字")}}
+          </div>
+          <div class="form-group">
+                {{form.e_description(class="form-control",placeholder="编辑描述")}}
+          </div>
+          <div class="form-group">
+                {{form.e_address(class="form-control",placeholder="编辑地址")}}
+          </div>
+          <div class="form-btn text-center">
+            <button type="submit" class="btn btn-default btn-submit">{{form.submit.label}}修改{{form.submit}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>

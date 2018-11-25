@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block page_content %}
+
+<div class="main-container container-fluid clearfix">
+  <div class="row">
+    <div class="col-md-2">
+      <ul id="main-nav" class="nav nav-admin panel" style="">
+        <li class="active">
+          <a href="#" class="first">用户管理</a>
+        </li>
+        <li>
+          <a href="#">评论管理</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-10">
+      <div class="panel admin-content">
+        <div class="form-search">
+          <form class="form-inline">
+            <div class="form-group">
+              <label for="search" class="sr-only">Password</label>
+              <input type="text" class="form-control" id="search" placeholder="search">
+            </div>
+            <button type="submit" class="btn btn-default btn-primary">搜 索</button>
+          </form>
+        </div>
+        <div class="admin-table">
+          <table class="table  table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>报警时上限</th>
+                <th>报警时下限</th>
+                <th>报警时数据</th>
+                <th>报警时间</th>
+                <th>报警原因</th>
+                <th>报警传感器</th>
+                <th>报警设备</th>
+                <th>报警设备主人</th>
+
+              </tr>
+            </thead>
+            {% for baojing in paginate.items %}
+            {% if current_user == baojing.data.chuanganqi.shebei.user %}
+            <tbody>
+              <tr>
+                <td>{{baojing.id}}</td>
+                <td>{{baojing.shangxian}}</td>
+                <td>{{baojing.xiaxian}}</td>
+                <td>{{baojing.data.data}}</td>>
+                <td>{{moment(baojing.timestamp).format('LLL')}}</td>
+                <td>{{baojing.yuanyin}}</td>
+                <td>{{baojing.data.chuanganqi.name}}</td>
+                <td>{{baojing.data.chuanganqi.shebei.name}}</td>
+                <td>{{baojing.data.chuanganqi.shebei.user.name}}</td>
+              </tr>
+            </tbody>
+            {% endif %}
+            {% endfor %}
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div align="center">
+        {% import 'macro/macro.html' as macro %}
+        {{macro.pagination_widget(paginate, 'main.baojing')}}
+</div>
+{% endblock %}
+
+{% block page_content1 %}
+  {{super()}}
+{% endblock %}

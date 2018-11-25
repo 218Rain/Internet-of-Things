@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>阳光社区</title>
+</head>
+<body>
+<h2><small>Dear</small>&nbsp;{{user_name}}!!</h2>
+<p>一封注册验证邮件，请点击
+    <!--http://127.0.0.1/auth/confirm?token=xxxxxxxxxxxxxxxxxxxxx-->
+    <a href="{{url_for('auth.confirm', token=token, _external=True)}}">这里</a>
+    激活您的账户。</p>
+<h4><small>By</small>&nbsp;IOT云服务</h4>
+
+</body>
+</html>

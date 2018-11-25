@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+{% extends 'base.html' %}
+
+{% block page_content %}
+<div class="main-container container clearfix">
+  <div class="content panel" id="content">
+    <div class="node">
+      <div class="node-form register-form">
+        <form action="" method="post">
+          {{form.hidden_tag()}}
+          <div class="form-group">
+            <label class="sr-only"></label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              </div>
+              {{form.email(class="form-control", placeholder="请输入邮箱")}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="sr-only"></label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              </div>
+              {{form.name(class="form-control", placeholder="请输入名字")}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="sr-only"></label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+              </div>
+              {{form.password(class="form-control", placeholder="请输入密码")}}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="sr-only"></label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+              </div>
+              {{form.password_again(class="form-control", placeholder="请确认密码")}}
+            </div>
+          </div>
+
+
+
+          <div class="form-btn text-center">
+            <a><button type="submit" class="btn btn-default btn-submit">
+              {{form.submit.label}}注册{{form.submit}}</button>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+</body>
+</html>

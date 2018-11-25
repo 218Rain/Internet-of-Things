@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+<html>
+{% block page_content %}
+<div class="sliders">
+  <div class="slide"><div class="container"><a href="#">&nbsp;</a></div></div>
+  <div class="webform">
+    <div class="container">
+      <div class="slider-form">
+        <div class="slider-form-box">
+          <h2>登录</h2>
+          <div class="webfrom">
+            <form action="" method="post">
+                {{form.hidden_tag()}}
+              <div class="form-group">
+                {{form.email(class="form-control",placeholder="请输入账号")}}
+              </div>
+              <div class="form-group">
+                {{form.password(class="form-control",placeholder="请输入密码")}}
+              </div>
+              <a><button type="submit" class="btn center-block">
+                {{form.submit.label}}登录{{form.submit}}</button>
+              </a>
+            </form>
+
+          </div>
+          <div class="caozuo clearfix">
+            <div class="wangji"><a href="#">忘记密码？</a></div>
+            <div class="zhuce"><a href="{{url_for('auth.register')}}">立即注册</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-container clearfix">
+  <div class="content" id="content">
+    <div class="home-block-1 home-block">
+      <div class="container">
+        <h2>尚观物联网开放平台为您推荐全面完备的IOT云服务</h2>
+        <div class="sub-title">高频的开发者社区，汇聚着不同的知识源，帮您结交更多的物联网<br />爱好者，让项目与开发成果开始传播</div>
+        <ul class="list-unstyled clearfix">
+          <li class="list list-1">
+            <div class="tupian"></div>
+            <p>IoT PaaS 基础能力</p>
+          </li>
+          <li class="list list-2">
+            <div class="tupian"></div>
+            <p>SaaS 业务能力</p>
+          </li>
+          <li class="list list-3">
+            <div class="tupian"></div>
+            <p>IoT 数据云</p>
+          </li>
+          <li class="list list-4">
+            <div class="tupian"></div>
+            <p>开发者社区</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="home-block-banner"></div>
+    <div class="home-block-2 home-block">
+      <div class="container">
+        <h2>物联网服务平台为您提供的产品功能</h2>
+        <ul class="list-unstyled clearfix">
+        <li class="list list-1">
+          <div class="tupian"></div>
+          <p>流分析</p>
+        </li>
+        <li class="list list-2">
+          <div class="tupian"></div>
+          <p>设备云端管理</p>
+        </li>
+        <li class="list list-3">
+          <div class="tupian"></div>
+          <p>多协议适配</p>
+        </li>
+        <li class="list list-4">
+          <div class="tupian"></div>
+          <p>轻应用快速生成</p>
+        </li>
+        <li class="list list-5">
+          <div class="tupian"></div>
+          <p>API</p>
+        </li>
+        <li class="list list-6">
+          <div class="tupian"></div>
+          <p>在线调试</p>
+        </li>
+      </ul>
+      </div>
+    </div>
+
+    <div class="home-block-3 home-block">
+      <div class="container">
+        <h2>成熟的解决方案帮您快速了解物联网up-Link设备云平台</h2>
+        <ul class="list-unstyled clearfix">
+          <li class="list list-1">
+            <div class="tupian"><img src="../../../../static/images/home/tupian1.jpg" /></div>
+            <p>车道级位置服务平台</p>
+          </li>
+          <li class="list list-2">
+            <div class="tupian"><img src="../../../../static/images/home/tupian2.jpg" /></div>
+            <p>远程大棚监控系统</p>
+          </li>
+          <li class="list list-3">
+            <div class="tupian"><img src="../../../../static/images/home/tupian3.jpg" /></div>
+            <p>互联网制造云平台</p>
+          </li>
+          <li class="list list-4">
+            <div class="tupian"><img src="../../../../static/images/home/tupian4.jpg" /></div>
+            <p>室内环境监测评估系统</p>
+          </li>
+          <li class="list list-5">
+            <div class="tupian"><img src="../../../../static/images/home/tupian5.jpg" /></div>
+            <p>智慧水务解决方案</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="home-block-4 home-block">
+      <div class="container">
+        <h2>模组展示</h2>
+        <div class="home-block-content clearfix">
+          <div class="pull-left"><img src="../../../../static/images/home/mozu.png" /></div>
+          <div class="pull-right">
+            <span>up-Link助你验证想法</span>
+            <p>我们为您提供OneNET麒麟开发板，30分钟可搭建自己的智能硬件，迈出您进入物联网世界的第一步。麒麟座开
+              发板使用STM32的单片机，配备了光学、倾角、温湿度等多个传感器，支持WIFI和GPRS联网两种模式， 对于开
+              发者来说，最便利的是它预置了OneNET的连接协议， 只需要进行简单操作，就可以和OneNET进行数据传输和
+              实现反向控制。</p>
+            <a href="#" class="btn">立即申请</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="home-block-5 home-block">
+      <div class="container">
+        <h2>还在犹豫什么？</h2>
+        <div class="up text-center">
+          <a href="#" class="btn">立即加入</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block page_content1 %}
+  {{super()}}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+<html>
+
+{% block page_content %}
+<div class="main-container container clearfix">
+  <div class="content" id="content">
+    <div class="shebei-block panel">
+      <h2>设备详情：传感器
+        <a class="btn btn-default" href="{{url_for('auth.add_cgq', id = sb.id, sen_id = devices_id)}}">添加传感器</a>
+      </h2>
+      {% for sensors in paginate.items %}
+      {% if sensors.devices_id == sb.id %}
+      <div class="shebei-block-content">
+        <div class="list clearfix">
+          <div class="pull-left"><img src="../../../../static/images/shebei.jpg" /></div>
+          <div class="pull-right">
+            <h4>
+              <div class="field-p first"><span>传感器编号：</span>{{sensors.id}}</div>
+              <div class="field-p"><span>传感器名称：</span>{{sensors.name}}</div>
+              <div class="field-p"><span>传感器描述：</span>{{sensors.describe}}</div>
+              <div class="field-p"><span>所属的设备：</span>{{sensors.devices_id}}</div>
+              <div class="field-p"><span>传感器单位：</span>开/关</div>
+              <div class="field-p"><span>创建时间：</span>{{sensors.sensor_time}}</div>
+              <div class="btn-box">
+                <a class="btn btn-default" href="{{url_for('auth.add_cgq', id = sb.id)}}">添加传感器</a>
+                <a class="btn btn-default" href="{{url_for('auth.delete_cgq', sen_id = sensors.id, dev_id = sb.id)}}">删除传感器</a>
+                <a class="btn btn-default" href="{{url_for('auth.cgqsj', sen_id = sensors.id, dev_id = sb.id)}}">传感器数据</a>
+                <!--<a class="btn btn-default" href="{{url_for('auth.cgq')}}">传感器数据1</a>-->
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      <div align="center">
+        {% import 'macro/macro.html' as macro %}
+        {{macro.pagination_widget(paginate, 'auth.sbxq')}}
+      </div>
+    </div>
+    <script>$("[name='switch']").bootstrapSwitch();</script>
+  </div>
+
+
+</div>
+{% endblock %}
+
+</body>
+</html>

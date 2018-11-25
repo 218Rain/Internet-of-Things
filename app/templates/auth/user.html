@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+{% extends 'base.html' %}
+
+{% block page_content %}
+<div class="main-container container clearfix">
+  <div class="content" id="content">
+    <div class="node-list panel">
+      <div class="sidebar panel" id="sidebar-second">
+        <div class="block-sidebar block-sidebar-2">
+          {% for user in paginate.items %}
+          {% if user.id == current_user.id %}
+          <div class="block-sidebar-views">
+            <p><span>API-KEY：</span>{{user.api_key}}</p>
+            <p><span>名字：</span>{{user.name}}</p>
+            <p><span>用户类型：</span>{{user.role_id}}</p>
+            <p><span>邮箱：</span>{{user.email}}</p>
+            <p><span>验证：</span>{% if user.confirmed %}已验证
+                                 {% else %}未验证
+                                 {% endif %}</p>
+            <p><span>注册时间：</span>{{moment(user.register_time).format('LLL')}}</p>
+            <p><span>最后访问时间：</span>{{moment(user.access_time).fromNow()}}</p>
+          </div>
+          {% endif %}
+          {% endfor %}
+          <div class="group-btn">
+            <button type="button" class="btn btn-edit">编辑资料</button>
+            <button type="button" class="btn btn-Attention">取消关注</button>
+          </div>
+          <div class="block-sidebar-footer">
+            我的关注：20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            我的粉丝：66
+          </div>
+        </div>
+      </div>
+      <div class="text-left add-article">
+        <a class="" href="{{url_for('exchange.add')}}">发表文章</a>
+      </div>
+    {% for essay in paginate1.items %}
+    <div class="content">
+      <div class="node-list panel">
+        <ul>
+          <li>
+            <div class="field-title clearfix">
+              <a href="#">{{essay.title}}</a>
+              <div class="funlist clearfix">
+                <a href="#" class="funedit">编辑</a>
+                <a href="#" class="fundel">删除</a>
+              </div>
+              <span>{{current_user.name}}&nbsp;&nbsp;&nbsp;&nbsp;{{essay.timestamp}}</span>
+            </div>
+            <p>{{essay.body}}</p>
+          </li>
+        </ul>
+        </div>
+    </div>
+    {% endfor %}
+    <div align="center">
+        {% import 'macro/macro.html' as macro %}
+        {{macro.pagination_widget(paginate, 'auth.shebei')}}
+    </div>
+  </div>
+  </div>
+</div>
+{% endblock %}
+
+</body>
+</html>

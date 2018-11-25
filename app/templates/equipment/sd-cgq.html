@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+<html>
+{% block page_content %}
+<div class="main-container container clearfix">
+  <div class="charts">
+    <h2>设备：北京尚观周末班只能家居控制系统</h2>
+    <p>传感器：设备位置</p>
+
+    <div id="charts"></div>
+  </div>
+
+  <div class="data">
+    <div class="row">
+
+      <div class="col-md-4 col-lg-4">
+        <div class="data-list">
+          <div class="data-top clearfix">
+            <div class="data-title left">数据</div>
+            <div class="data-title right">时间</div>
+            {% for data in data3%}
+            {% if data.sensor_id == sensor.id %}
+              <ul>
+                <li class="clearfix">
+                  <div class="left">{{data.data}}</div>
+                  <div class="right">{{data.timestamp}}</div>
+                </li>
+              </ul>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <div class="data-list">
+          <div class="data-top clearfix">
+            <div class="data-title left">数据</div>
+            <div class="data-title right">时间</div>
+            {% for data in data2%}
+            {% if data.sensor_id == sensor.id %}
+              <ul>
+                <li class="clearfix">
+                  <div class="left">{{data.data}}</div>
+                  <div class="right">{{data.timestamp}}</div>
+                </li>
+              </ul>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <div class="data-list">
+          <div class="data-top clearfix">
+            <div class="data-title left">数据</div>
+            <div class="data-title right">时间</div>
+            {% for data in data1%}
+            {% if data.sensor_id == sensor.id %}
+              <ul>
+                <li class="clearfix">
+                  <div class="left">{{data.data}}</div>
+                  <div class="right">{{data.timestamp}}</div>
+                </li>
+              </ul>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
+<script src="../../../../static/js/echarts.min.js"></script>
+<script>
+  var yData = {{yDataArray|tojson}};
+  var xData = {{xDataArray|tojson}};
+  var sensorStr = {{sensor.name|tojson}};
+  option = {
+    title: {
+        text: '温度传感器'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:[sensorStr]
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: xData
+    },
+    yAxis: {
+        type: 'value',
+        scale: true
+    },
+    series: [
+        {
+            name:sensorStr,
+            type:'line',
+            stack: '总量',
+            data:yData
+        },
+    ]
+};
+
+
+  var myChart = echarts.init(document.getElementById('charts'), 'customed');
+  myChart.setOption(option);
+
+
+</script>
+{% endblock %}
+</body>
+</html>

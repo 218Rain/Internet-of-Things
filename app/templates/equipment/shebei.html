@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+<html>
+
+{% block page_content %}
+<div class="main-container container clearfix">
+  <div class="content panel" id="content">
+    <div class="shebei-block">
+      <h2>
+        我的全部设备
+        <a href="{{url_for('auth.add_shebei')}}">添加设备</a>
+      </h2>
+      {% for device in paginate.items %}
+      {% if device.user_id == current_user.id %}
+      <div class="shebei-block-content">
+        <div class="list clearfix">
+          <div class="pull-left"><img src="../../../../static/images/shebei.jpg" /></div>
+          <div class="pull-right">
+            <div class="field-title">{{device.name}}【设备ID：{{device.id}}】</div>
+            <div class="field-miaoshu"><span>设备描述：</span>{{device.describe}}</div>
+            <div class="field-date"><span>创建时间：</span>{{device.establish_time}}</div>
+            <div class="field-weizhi"><span>设备位置：</span>{{device.location}}</div>
+            <div class="btn-box">
+              <a class="btn btn-default" href="{{url_for('auth.delete_shebei', dev_id = device.id)}}">删除设备</a>
+              <a class="btn btn-default" href="{{url_for('auth.sbxq', id = device.id)}}">设备详情</a>
+              <a class="btn btn-default" href="{{url_for('auth.sbbj', dev_id = device.id)}}">编辑设备</a>
+              <a class="btn btn-default" href="{{url_for('auth.baojin', dev_id = device.id)}}">设备报警</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      <div align="center">
+        {% import 'macro/macro.html' as macro %}
+        {{macro.pagination_widget(paginate, 'auth.shebei')}}
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="sidebar panel" id="sidebar-second">
+    <div class="block-sidebar-1">
+      <img src="../../../../static/images/banner.png" />
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+<html>
+{% block page_content %}
+<div class="main-container container clearfix">
+  <h1>
+    欢迎，{{current_user.name}}
+    <div class="text-right add-article">
+        <a class="" href="{{url_for('exchange.add')}}">发表文章</a>
+    </div>
+  </h1>
+
+  {% for essay in paginate.items %}
+  <div class="content" id="content">
+    <div class="node-list panel">
+      <ul>
+        <li>
+          <div class="field-title clearfix">
+            <a href="#">{{essay.title}}</a>
+            <div class="funlist clearfix">
+              <a href="#" class="funedit">编辑</a>
+              <a href="#" class="fundel">删除</a>
+            </div>
+            <span>{{current_user.name}}&nbsp;&nbsp;&nbsp;&nbsp;{{essay.timestamp}}</span>
+          </div>
+          <p>{{essay.body}}</p>
+        </li>
+      </ul>
+    </div>
+    {% endfor %}
+    <div align="center">
+        {% import 'macro/macro.html' as macro %}
+        {{macro.pagination_widget(paginate, 'auth.shebei')}}
+    </div>
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>
